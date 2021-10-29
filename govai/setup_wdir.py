@@ -44,9 +44,11 @@ assert configs_path is not None, f"configs/{conf_type} missing in govai/store/"
 
 wdir_conf_path = str(wdir/'configs')
 shutil.copytree(configs_path, wdir_conf_path)
-
-conf = OmegaConf.load(str(wdir_conf_path / 'default.yaml'))
+conf = OmegaConf.load(wdir_conf_path+'/default.yaml')
 conf.wdir = str(wdir.absolute())
+with open(wdir_conf_path+'/default.yaml', 'w') as fp:
+    s = OmegaConf.to_yaml(conf)
+    fp.write(s)
 
 if conf_type == ConfType.regression:
     for structure in WorkingDirStructure.regression:
