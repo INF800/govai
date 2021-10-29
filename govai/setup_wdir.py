@@ -23,11 +23,13 @@ class WorkingDirStructure:
     regression = ['submission',
                   'original_data/kfold',
                   'feature',
-                  'model']
+                  'model',
+                  'nbs']
     binary_classifcation = ['submission',
                             'original_data/kfold',
                             'feature',
-                            'model']
+                            'model'
+                            'nbs']
 
 ALLOWED_CONF_TYPES = [ConfType.regression,]
 

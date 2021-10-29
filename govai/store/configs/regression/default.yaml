@@ -1,1 +1,23 @@
 wdir: null
+seed: 111
+
+original_data:
+  file_path: # absolute path to csv file with independant and dependant variables
+  delimiter: ',' 
+  ignore_header: false
+  ignore_cols: null
+  lower_case_col_names: true
+  target_col: sales
+  kfold_col: kfold
+  kfold: 10 
+  id_column: id
+  stratified: true
+  bins: auto
+  shuffle: true
+  output_dir: original_data/kfold/
+
+featurize: # todo
+
+train: # todo (includes path to model hyperparameters)
+
+inference: # todo
