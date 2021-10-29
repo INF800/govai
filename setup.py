@@ -8,4 +8,5 @@ setup(name='govai',
       author_email='rakeshark22@gmail.com',
       license='Apache v2',
       packages=['govai'],
-      zip_safe=False)
+      zip_safe=False,
+      install_requires=['omegaconf==2.1.1'])

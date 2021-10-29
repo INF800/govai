@@ -4,14 +4,15 @@
 # 
 # Simply add new task inside `ConfType` and using the same
 # name create list of folder structures that must be created
-# inside working directory.
+# inside working directory in `WorkingDirStructure`
 
 import sys
 import shutil
+from dataclasses import dataclass
 
 from pathlib import Path
 import pkg_resources as pr
-
+from omegaconf import OmegaConf
 
 class ConfType:
     regression = 'regression'
@@ -39,7 +40,13 @@ if not wdir.exists():
     wdir.mkdir(exist_ok=True, parents=True)
 
 configs_path = pr.resource_filename("govai.store", f"configs/{conf_type}")
-shutil.copytree(configs_path, str(wdir/'configs'))
+assert configs_path is not None, f"configs/{conf_type} missing in govai/store/"
+
+wdir_conf_path = str(wdir/'configs')
+shutil.copytree(configs_path, wdir_conf_path)
+
+conf = OmegaConf.load(str(wdir_conf_path / 'default.yaml'))
+conf.wdir = str(wdir.absolute())
 
 if conf_type == ConfType.regression:
     for structure in WorkingDirStructure.regression:
