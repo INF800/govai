@@ -15,3 +15,11 @@ Share distributable using pypi
 ```
 twine upload dist/* 
 ```
+
+### Usage
+
+1. Decide your working dir where all your code data will be shared. Let us call this `{wdir}`
+2. generate configs in wdir using. After command runs, we will see `configs` directory in `{wdir}`
+    ```shell
+    python -m govai.get_configs {wdir}
+    ```
