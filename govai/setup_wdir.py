@@ -1,3 +1,11 @@
+# This module has only two purposes
+# 1. Copy configs into working directory (based on task type)
+# 2. Generate folder structure for each task type
+# 
+# Simply add new task inside `ConfType` and using the same
+# name create list of folder structures that must be created
+# inside working directory.
+
 import sys
 import shutil
 
