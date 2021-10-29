@@ -21,5 +21,5 @@ twine upload dist/*
 1. Decide your working dir where all your code data will be shared. Let us call this `{wdir}`
 2. Generate folder structure. After command runs, we will see `configs` directory in `{wdir}`
     ```shell
-    python -m govai.setup_working_dir {wdir}
+    python -m govai.setup_wdir regression /workspaces/olympiad
     ```
