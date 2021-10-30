@@ -13,7 +13,7 @@ def main(args):
                            header=args.header,
                            sep=args.delimiter)
 
-    cols = [i.lower() for i in df_test.columns]
+    cols = [i.lower().replace(" ", "_") for i in df_test.columns]
     df_test.columns = cols
     if args.ignore_cols:
         cols = list(set(cols) - set(ignore_cols))
@@ -26,7 +26,7 @@ def main(args):
                            header=args.header,
                            sep=args.delimiter)
     
-    cols = [i.lower() for i in df_train.columns]
+    cols = [i.lower().replace(" ", "_") for i in df_train.columns]
     df_train.columns = cols
     if args.ignore_cols:
         cols = list(set(cols) - set(ignore_cols))

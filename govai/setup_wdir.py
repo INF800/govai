@@ -24,12 +24,12 @@ class WorkingDirStructure:
                   'original_data',
                   'feature',
                   'model',
-                  'nbs']
+                  'nb']
     binary_classifcation = ['submission',
                             'original_data',
                             'feature',
                             'model'
-                            'nbs']
+                            'nb']
 
 ALLOWED_CONF_TYPES = [ConfType.regression,]
 
