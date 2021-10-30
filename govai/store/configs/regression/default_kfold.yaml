@@ -1,0 +1,26 @@
+# example usage:
+# python3 -m govai.regression.generate_kfold configs/default_kfold.yaml
+
+wdir: null
+seed: 111
+log: true
+
+lower_case_col_names: true
+ignore_header: null
+ignore_cols: null
+delimiter: ',' 
+id_column: id
+
+train_file:
+  path: # absolute path to csv file with independant and dependant variables
+  target_col: sales
+  kfold_col: kfold
+  kfold: 5 
+  stratified: true
+  n_bins: auto
+  shuffle: true
+  output_path: original_data/kfold.csv
+
+test_file:
+  path: # absolute path to csv file with independant and dependant variables
+  output_path: original_data/test.csv
