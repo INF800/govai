@@ -9,4 +9,6 @@ setup(name='govai',
       license='Apache v2',
       packages=['govai'],
       zip_safe=False,
-      install_requires=['omegaconf>=2.1.1',])
+      install_requires=['omegaconf>=2.1.1',
+                        'scikit-learn==1.0.1',
+                        'pandas==1.3.4'])

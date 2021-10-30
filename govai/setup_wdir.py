@@ -21,12 +21,12 @@ class ConfType:
 
 class WorkingDirStructure:
     regression = ['submission',
-                  'original_data/kfold',
+                  'original_data',
                   'feature',
                   'model',
                   'nbs']
     binary_classifcation = ['submission',
-                            'original_data/kfold',
+                            'original_data',
                             'feature',
                             'model'
                             'nbs']
@@ -44,13 +44,17 @@ if not wdir.exists():
 configs_path = pr.resource_filename("govai.store", f"configs/{conf_type}")
 assert configs_path is not None, f"configs/{conf_type} missing in govai/store/"
 
-wdir_conf_path = str(wdir/'configs')
-shutil.copytree(configs_path, wdir_conf_path)
-conf = OmegaConf.load(wdir_conf_path+'/default.yaml')
-conf.wdir = str(wdir.absolute())
-with open(wdir_conf_path+'/default.yaml', 'w') as fp:
-    s = OmegaConf.to_yaml(conf)
-    fp.write(s)
+wdir_conf_path = wdir/'configs'
+shutil.copytree(configs_path, str(wdir_conf_path))
+
+wdir_conf_paths = wdir_conf_path.rglob('**/*.yaml')
+wdir_conf_paths = [*wdir_conf_paths]
+for wdir_conf_path in wdir_conf_paths:
+    conf = OmegaConf.load(str(wdir_conf_path))
+    conf.wdir = str(wdir.absolute())
+    with open(wdir_conf_path, 'w') as fp:
+        s = OmegaConf.to_yaml(conf)
+        fp.write(s)
 
 if conf_type == ConfType.regression:
     for structure in WorkingDirStructure.regression:
