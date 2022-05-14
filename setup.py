@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(name='govai',
       version='0.0.0',
-      description='ML Library',
+      description='Applied ML Library',
       url='http://github.com/INF800/govai',
       author='Asapanna Rakesh',
       author_email='rakeshark22@gmail.com',
